@@ -36,7 +36,7 @@ export class SignupFormComponent {
       this._login.signup(username, email, password, role).subscribe((res: HttpResponse<any>) => {
       localStorage.setItem('userId',res.body.userId);
       console.log(res);
-      this._router.navigate(['/admin']);
+      this._router.navigate(['/']);
       this._dialogRef.close();
     })
   }

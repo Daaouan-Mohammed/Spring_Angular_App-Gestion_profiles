@@ -36,7 +36,7 @@ export class LoginFormComponent {
       localStorage.setItem('token',res.body.token);
       localStorage.setItem('userId',res.body.userId);
       console.log(res);
-      this._router.navigate(['/admin']);
+      this._router.navigate(['/user']);
       this._dialogRef.close();
     })
   }
