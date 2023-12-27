@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginFormComponent } from '../login-form/login-form.component';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import { SignupSigninComponent } from '../signup-signin/signup-signin.component';
 
 @Component({
   selector: 'app-authentication',
@@ -29,9 +29,9 @@ export class AuthenticationComponent {
   }
   
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(LoginFormComponent, {
+    this.dialog.open(SignupSigninComponent, {
       width: '30%',
-      height: '70%',
+      height: '30%',
       enterAnimationDuration,
       exitAnimationDuration,
       disableClose: false

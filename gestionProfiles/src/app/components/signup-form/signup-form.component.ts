@@ -1,16 +1,17 @@
+import { Component } from '@angular/core';
 import { DialogRef } from '@angular/cdk/dialog';
 import { HttpResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
-
 @Component({
-  selector: 'app-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.css']
+  selector: 'app-signup-form',
+  templateUrl: './signup-form.component.html',
+  styleUrls: ['./signup-form.component.css']
 })
-export class LoginFormComponent {
+export class SignupFormComponent {
+
+ 
   LoginForm: FormGroup;
   errorMsg: any;
   hide = true;
@@ -20,7 +21,7 @@ export class LoginFormComponent {
 
   constructor(
     private _fb: FormBuilder,
-    private _dialogRef: DialogRef<LoginFormComponent>,
+    private _dialogRef: DialogRef<SignupFormComponent>,
     private _router: Router,
     private _login: LoginService,
   ) {
@@ -31,14 +32,12 @@ export class LoginFormComponent {
     })
   }
 
-  OnFormLogin(username: string, password: string) {
-      this._login.login(username, password).subscribe((res: HttpResponse<any>) => {
-      localStorage.setItem('token',res.body.token);
+  OnFormSignup(username: string,email:string, password: string, role:string) {
+      this._login.signup(username, email, password, role).subscribe((res: HttpResponse<any>) => {
       localStorage.setItem('userId',res.body.userId);
       console.log(res);
       this._router.navigate(['/admin']);
       this._dialogRef.close();
     })
   }
-
 }
